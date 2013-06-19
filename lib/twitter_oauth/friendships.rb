@@ -46,8 +46,8 @@ module TwitterOAuth
       users = []
       while cursor != 0 do
         json = friends(cursor)
-        cursor = json["next_cursor"]
-        users += json["users"]
+        cursor = json["next_cursor"].to_i
+        users += Array(json["users"])
       end
       users
     end
